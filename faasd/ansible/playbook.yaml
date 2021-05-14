@@ -1,0 +1,33 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Create envoy folder
+    file:
+      path: /app/envoy
+      state: directory
+    register: folder
+  - name: Make ssl directory
+    file:
+      path: /app/envoy/ssl/
+      state: directory
+  - name: Copy faasd.ediri.online SSL cert certificates
+    ansible.builtin.copy:
+      src: envoy/fullchain.pem
+      dest: /app/envoy/ssl/ssl.crt
+  - name: Copy faasd.ediri.online SSL key certificates
+    ansible.builtin.copy:
+      src: envoy/privkey.pem
+      dest: /app/envoy/ssl/ssl.key
+  - name: copy front-envoy.yaml
+    ansible.builtin.copy:
+      src: envoy/front-envoy.yaml
+      dest: /app/envoy/front-envoy.yaml
+  - name: Enable service envoy
+    ansible.builtin.service:
+      name: envoy
+      enabled: yes
+  - name: Start service envoy, if not started
+    ansible.builtin.service:
+      name: envoy
+      state: started
