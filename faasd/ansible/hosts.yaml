@@ -1,0 +1,11 @@
+all:
+  children:
+    faasd:
+      hosts:
+        193.148.166.218:
+  vars:
+    update_packages: false
+    ansible_connection: ssh
+    ansible_user: ubuntu
+    ansible_python_interpreter: "/usr/bin/python3"
+

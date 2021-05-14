@@ -1,0 +1,8 @@
+.idea
+*.iml
+**/aebi_x0Ek3sqx-openrc.sh
+**/aebi_playground_Ic5f5KtV-openrc.sh
+**/password
+**/.terraform
+**/letsencrypt
+**/ssh
