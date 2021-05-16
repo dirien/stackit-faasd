@@ -159,7 +159,7 @@ Also, I deliver the envoy config `front-envoy.yaml` and start the `envoy` servic
 
 Do not forget to add your public ip address into the `hosts.yaml` file. Execute the playbook with following command:
 
-    ansible-playbook --private-key ssh/faasd -i ansible/hosts.yaml ansible/playbook.yaml
+    ansible-playbook --ask-vault-pass --private-key ssh/faasd -i ansible/hosts.yaml ansible/playbook.yaml
 
 As we use ansible-vault, we need to provide the password. 
 
