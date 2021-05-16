@@ -24,6 +24,7 @@ static_resources:
                           redirect:
                             path_redirect: "/"
                             https_redirect: true
+
                 http_filters:
                   - name: envoy.filters.http.router
     - name: listener_https
@@ -49,6 +50,7 @@ static_resources:
                             prefix: "/"
                           route:
                             cluster: service-http
+                            timeout: 60s
                 http_filters:
                   - name: envoy.filters.http.router
           transport_socket:
@@ -64,7 +66,7 @@ static_resources:
 
   clusters:
     - name: service-http
-      connect_timeout: 0.25s
+      connect_timeout: 60s
       type: static
       load_assignment:
         cluster_name: service-http
