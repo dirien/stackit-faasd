@@ -42,6 +42,15 @@ static_resources:
                 route_config:
                   name: local_route
                   virtual_hosts:
+                    - name: prometheus
+                      domains:
+                        - "prometheus.faasd.ediri.online"
+                      routes:
+                        - match:
+                            prefix: "/"
+                          route:
+                              cluster: service-prometheus
+                              timeout: 60s
                     - name: app
                       domains:
                         - "*"
@@ -77,3 +86,15 @@ static_resources:
                     socket_address:
                       address: 0.0.0.0
                       port_value: 8080
+    - name: service-prometheus
+      connect_timeout: 60s
+      type: static
+      load_assignment:
+        cluster_name: service-prometheus
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 0.0.0.0
+                      port_value: 9090
