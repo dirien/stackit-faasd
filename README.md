@@ -51,8 +51,9 @@ Create in the faasd a folder called ssh. Change into the folder and create the s
 
     ssh-keygen -t rsa -f ./faasd
 
-## Terraform cli
+## Terraform
 
+### Terraform HCL
 After this you can execute the terraform commands as usual:
 
     terraform init
@@ -69,6 +70,24 @@ You should see following output:
     faasd-public = "yy.yy.yy.yy"
 
 Take this ip, and create an A record in your domain.
+
+###Terraform-CDK (Go)
+
+Change into the `cdk` folder.
+
+Install with Homebrew:
+
+    $ brew install cdktf
+
+Run `cdktf get` to generate the bindings for the providers. By default the generated Go code will be output to the generated subdirectory.
+
+You can now deploy your CDK for Terraform application using the `cdktf deploy` command.
+
+    cdktf deploy
+
+You can destroy the application by running `cdktf destroy`.
+
+    cdktf destroy
 
 # cloud-init
 
