@@ -71,7 +71,7 @@ You should see following output:
 
 Take this ip, and create an A record in your domain.
 
-###Terraform-CDK (Go)
+### Terraform-CDK (Go)
 
 Change into the `cdk` folder.
 
