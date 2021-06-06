@@ -3,7 +3,7 @@ variable "pool" {
 }
 
 variable "ssh_key_file" {
-  default = "ssh/faasd"
+  default = "../ssh/faasd"
 }
 
 variable "faasd-name" {
