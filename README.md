@@ -11,6 +11,7 @@ The installation consist from following components:
 
 - STACKIT OpenStack (https://www.openstack.org/)
 - Terraform (https://www.terraform.io/)
+- Pulumi (https://pulumi.com)  
 - Azure Object Storage (https://www.terraform.io/docs/language/settings/backends/azurerm.html)
 - cloud-init (https://cloudinit.readthedocs.io)
 - containerd (https://containerd.io/)
@@ -29,11 +30,16 @@ Long story short, I just created the UAT to access the OpenStack API. And we dow
 
 # Azure Object Storage
 
-This step is completely optional, I just did not want to save the Terraform states in Git or store them on my local file system.
+This step is completely optional, I just did not want to save the Terraform/Pulumi states in Git or store them on my local file system.
 
 After creating the container storage on Azure, don't forget to export the `ARM_ACCESS_KEY`
 
     export ARM_ACCESS_KEY=xxxx
+
+Or for Pulumi
+
+    export AZURE_STORAGE_ACCOUNT=xxx
+    export AZURE_STORAGE_KEY=yyy
 
 # Terraform
 
@@ -50,6 +56,24 @@ Please adapt the `variables.tf` for the values you need. In `datasource.tf`, I r
 Create in the faasd a folder called ssh. Change into the folder and create the ssh key via:
 
     ssh-keygen -t rsa -f ./faasd
+
+## Pulumi
+
+Install the cli
+
+    brew install pulumi
+
+Log into your backend, here we use Azure
+    
+    pulumi login azblob://<name>   
+
+After you can deploy the Stack with
+
+    pulumi preview
+
+    pulumi up
+
+    pulumi destroy
 
 ## Terraform
 
