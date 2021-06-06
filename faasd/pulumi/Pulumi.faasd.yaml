@@ -1,0 +1,5 @@
+encryptionsalt: v1:az9zCU90reo=:v1:csLbIbnaaYoFJFSI:e2Z98jD5Jtx66mQYM/xKDfKZmKcWPw==
+config:
+  faasd-pulumi:flavor: c1.3
+  faasd-pulumi:image-id: b017f5da-86e2-49ec-98ce-14250f758bfa
+  faasd-pulumi:subnet-cidr: 10.1.10.0/24

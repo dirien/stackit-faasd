@@ -1,0 +1,3 @@
+name: faasd-pulumi
+runtime: go
+description: Installing faasd on STACKIT
