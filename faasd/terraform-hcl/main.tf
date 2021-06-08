@@ -170,7 +170,7 @@ resource "openstack_compute_instance_v2" "faasd-vm" {
   }
 
   block_device {
-    uuid                  = var.ubuntu-image-id
+    uuid                  = data.openstack_images_image_v2.ubuntu-image.id
     source_type           = "image"
     boot_index            = 0
     destination_type      = "volume"

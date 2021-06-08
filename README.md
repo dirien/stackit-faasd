@@ -214,7 +214,7 @@ If everything goes well, you should see with your DNS following page:
 
 ![faasd](img/faasd.png)
 
-#the missing parts
+# the missing parts
 
 + monitoring
 + logging
