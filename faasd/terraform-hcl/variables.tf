@@ -18,6 +18,6 @@ variable "subnet-cidr" {
   default = "10.1.10.0/24"
 }
 
-variable "ubuntu-image-id" {
-  default = "b017f5da-86e2-49ec-98ce-14250f758bfa"
+variable "ubuntu-image-name" {
+  default = "Ubuntu 20.04"
 }
