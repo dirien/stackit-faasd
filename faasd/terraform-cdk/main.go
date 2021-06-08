@@ -101,6 +101,15 @@ func FaasdStack(scope constructs.Construct, id string) cdktf.TerraformStack {
 		Base64Encode: jsii.Bool(true),
 		Part:         &configpart,
 	})
+
+	activeImage := openstack.NewDataOpenstackImagesImageV2(stack, jsii.String("image"), &openstack.DataOpenstackImagesImageV2Config{
+		Name: jsii.String("Ubuntu 20.04"),
+		Properties: &map[string]*string{
+			"Status": jsii.String("active"),
+		},
+		//MostRecent: jsii.Bool(true),
+	})
+
 	vm := openstack.NewComputeInstanceV2(stack, jsii.String("vm"), &openstack.ComputeInstanceV2Config{
 		Name:           jsii.String(fmt.Sprintf("%s-ubuntu", id)),
 		FlavorName:     jsii.String("c1.3"),
@@ -112,7 +121,7 @@ func FaasdStack(scope constructs.Construct, id string) cdktf.TerraformStack {
 		},
 		BlockDevice: &[]*openstack.ComputeInstanceV2BlockDevice{
 			{
-				Uuid:                jsii.String("b017f5da-86e2-49ec-98ce-14250f758bfa"),
+				Uuid:                activeImage.Id(),
 				SourceType:          jsii.String("image"),
 				BootIndex:           jsii.Number(0),
 				DestinationType:     jsii.String("volume"),

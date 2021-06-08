@@ -101,6 +101,8 @@ Change into the `cdk` folder.
 
 Install with Homebrew:
 
+Attention: Only `version >= 0.4.1` is working due to a bug 👉 [#763](https://github.com/hashicorp/terraform-cdk/issues/763)
+
     $ brew install cdktf
 
 Run `cdktf get` to generate the bindings for the providers. By default the generated Go code will be output to the generated subdirectory.
